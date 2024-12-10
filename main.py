@@ -80,7 +80,8 @@ plt.plot(bond_lengths, energies, marker='o', linestyle='-', label="Potential Ene
 plt.title("Potential Energy Curve for H2 Molecule", fontsize=14) # 그래프 제목
 plt.xlabel("Bond Length (Å)", fontsize=12) # X축: 결합 길이
 plt.ylabel("Energy (Hartree)", fontsize=12) # Y축: 에너지
-plt.axvline(x=cfg.H2_ANGSTROM, color='r', linestyle='--', label=f"Equilibrium Bond Length (~{cfg.H2_ANGSTROM} Å)")
+plt.axvline(x=cfg.H2_EBL_ANGSTROM, color='b', linestyle='--', label=f"Equilibrium Bond Length (~{cfg.H2_EBL_ANGSTROM} Å)")
+plt.axvline(x=cfg.H2_DTL_ANGSTROM, color='r', linestyle='--', label=f"Dissociation Threshold Length (~{cfg.H2_DTL_ANGSTROM} Å)")
 plt.legend() # 범례 추가
 plt.grid(alpha=0.5) # 그래프 그리드 추가 (가시성 개선)
 plt.show() # 전위 에너지 곡선 그래프 표시
