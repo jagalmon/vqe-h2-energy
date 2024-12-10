@@ -26,7 +26,7 @@ bond_lengths = np.linspace(cfg.BOND_MIN, cfg.BOND_MAX, cfg.BOND_COUNT)
 energies = []
 
 num_electrons = cfg.NUM_ELECTRONS # 일반적인 상태(중성 수소 원자)에서는 하나의 원자는 하나의 전자를 가짐
-num_spatial_orbitals = cfg.NUM_SPATIAL_ORBITALS # H₂ 분자의 경우, 활성 공간에 필요한 최소 궤도는 결합 궤도와 반결합 궤도
+num_spatial_orbitals = cfg.NUM_SPATIAL_ORBITALS # H₂ 분자의 경우 활성 공간에 필요한 최소 궤도는 결합 궤도와 반결합 궤도
 
 # 활성 공간 변환기
 transformer = ActiveSpaceTransformer(num_electrons=num_electrons, num_spatial_orbitals=num_spatial_orbitals)
@@ -72,6 +72,9 @@ for bond_length in bond_lengths:
     result = vqe.compute_minimum_eigenvalue(qubit_op)
     energies.append(result.eigenvalue.real)
 
+    # 평형 결합 거리와 해리 임계 거리에 대한 하르트리 값이 해당할 경우 다른 하르트리 값과 다르게 표시할 방안 필요
+
+    # 그래프를 그리든 말든 어쨌든 최종적으로는 하르트리 값을 구해야 하는것
     print("Calculated ground state energy (Hartree):", result.eigenvalue.real)
 
 # 이하 그래프 생성
